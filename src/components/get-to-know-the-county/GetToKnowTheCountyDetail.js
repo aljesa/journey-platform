@@ -9,7 +9,7 @@ function GetToKnowTheCountyDetail() {
     const [countries, fetchCountries] = useState([]);
 
     const getData = () => {
-        fetch('https://countriesnow.space/api/v0.1/countries')
+        fetch('https://restcountries.com/v3.1/all')
             .then((res) => res.json())
             .then((res) => {
                 fetchCountries(res)
