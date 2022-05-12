@@ -162,6 +162,14 @@ ul {
   color: var(--white-color);
 }
 
+.breadcrumbs.without-banner {
+  position: unset;
+}
+
+.breadcrumbs.without-banner ol a {
+  color: var(--white-color);
+}
+
 .breadcrumbs ol a:after {
   content: ">";
   position: absolute;
@@ -220,4 +228,24 @@ ul {
   height: 100%;
   background: #00000082;
   z-index: 9;
+}
+
+.page-wrapper .bg {
+  padding: 10px 0;
+}
+
+button.btn-primary {
+  background-color: var(--dark-violet-color);
+  border-color: var(--dark-violet-color);
+  transition: .5s;
+}
+
+button.btn-primary:hover {
+  background-color: var(--dark-yellow-color);
+  border-color: var(--dark-yellow-color);
+}
+
+button.btn-primary svg {
+  font-size: 18px;
+  ;
 }
