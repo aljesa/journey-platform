@@ -1,6 +1,8 @@
 import { Container, Row, Col, Breadcrumb, Figure } from "react-bootstrap"
 import { Bicycle, CurrencyDollar, FilePdf, HouseDoor, Person, PersonBadge, PersonCircle, Pin, PinFill, Tag, X, XLg } from "react-bootstrap-icons"
 import { Link } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 import "./Places.css";
 
 
@@ -9,6 +11,7 @@ export default function PlacesDetail() {
 
     return (
         <div className="page-wrapper detail">
+            <Header />
             <div className="content w-bg single-bg" style={{ backgroundImage: `url("/assets/images/general/hotel.jpeg")` }}>
                 <Container>
                     <div className="text-start bg-content">
@@ -110,6 +113,7 @@ export default function PlacesDetail() {
 
                 </div>
             </Container>
+            <Footer />
         </div>
     )
 }

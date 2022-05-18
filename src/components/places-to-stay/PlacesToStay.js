@@ -1,6 +1,8 @@
 import { Container, Row, Col, Breadcrumb, Form, Card, Figure } from "react-bootstrap";
 import { MapFill, Phone, PhoneFill, PinFill, TelephoneFill, PinMap } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 
 
 function PlacesToStay() {
@@ -8,7 +10,7 @@ function PlacesToStay() {
 
     return (
         <div className="page-wrapper">
-
+            <Header />
             <div className="content w-bg single-bg" style={{ backgroundImage: `url("/assets/images/general/places-to-stay-bg.jpeg")` }}>
                 <Container>
                     <div className="text-start bg-content">
@@ -234,7 +236,7 @@ function PlacesToStay() {
 
                 </Container>
             </div>
-
+            <Footer />
         </div >
     );
 }

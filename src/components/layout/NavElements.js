@@ -1,25 +1,38 @@
-import { Navbar, Container, Nav, } from "react-bootstrap";
+import { Navbar, Container, Nav, Col } from "react-bootstrap";
+import { useEffect, useState } from "react";
+
 import { BoxArrowInRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import logo from '../../logo_transparent.png';
 
 
 function NavElements() {
+    const [navList, fetchNavLinks] = useState([]);
 
+    const getData = () => {
+        fetch('http://localhost:5296/api/Navigation')
+            .then((res) => res.json())
+            .then((res) => {
+                fetchNavLinks(res)
+            }).catch((error) => console.log('error', error))
+    }
+    useEffect(() => {
+        getData()
+    }, []);
     return (
         <Navbar bg="transparent" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">
+                <div className="navbar-brand">
                     <Link to="/"><img src={logo} alt="Journery Platform" /></Link>
-                </Navbar.Brand>
+                </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Link to="/" className="nav-link">Home</Link>
-                        <Link to="/things-to-do" className="nav-link">Things to do</Link>
-                        <Link to="/places-to-stay" className="nav-link">Places to stay</Link>
-                        <Link to="/get-to-know-the-county" className="nav-link">Get to know the county</Link>
-                        <Link to="/suitcase" className="nav-link link-w-icon"><BoxArrowInRight />Suitcase</Link>
+                        {navList.map(item => {
+                            return (
+                                <Link to={item.Link} className="nav-link" key={item.NavigationID}>{item.Title}</Link>
+                            );
+                        })}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

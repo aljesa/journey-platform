@@ -3,10 +3,14 @@ import { PinMap } from "react-bootstrap-icons";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import News from "../news/News";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 function Home() {
     return (
+
         <div className="homepage">
+            <Header />
             <main className="main-banner position-relative" style={{ backgroundImage: `url("/assets/images/general/home-banner-2.jpeg")` }}>
                 <div className="explore-now">
                     <a href="#scrollable">
@@ -118,6 +122,7 @@ function Home() {
                 </Container>
             </div>
             <News />
+            <Footer />
         </div >
 
     );

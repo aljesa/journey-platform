@@ -1,11 +1,14 @@
 import { Container, Breadcrumb, Table, Button } from "react-bootstrap";
 import { X } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 import "./Suitcase.css";
 
 export default function Suitcase() {
     return (
         <div className="page-wrapper">
+            <Header />
             <div className="bg bg-dark-violet">
                 <Container>
                     <Breadcrumb className="breadcrumbs without-banner">
@@ -50,7 +53,7 @@ export default function Suitcase() {
                     </Table>
                 </div>
             </Container>
-
+            <Footer />
         </div>
     )
 }

@@ -1,11 +1,14 @@
 import { Col, Container, Row, Card, Breadcrumb } from "react-bootstrap";
 import { Calendar, CalendarDate, Newspaper, Person } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 import "./News.css";
 
 function NewsOverview() {
     return (
         <div className="page-wrapper">
+            <Header />
             <div className="content w-bg single-bg" style={{ backgroundImage: `url("/assets/images/general/news-overview-banner.jpeg")` }}>
                 <Container>
                     <div className="text-start bg-content">
@@ -106,6 +109,7 @@ function NewsOverview() {
                     </div>
                 </Container>
             </div>
+            <Footer />
         </div>
 
     );

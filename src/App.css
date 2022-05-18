@@ -7,6 +7,7 @@
   --dark-yellow-color: #ffaf4f;
   --white-color: #fff;
   --black-color: #000;
+  --dark-blue-color: #111827;
 }
 
 body {
@@ -122,8 +123,16 @@ ul {
 
 }
 
+.bg-dark-blue {
+  background: var(--dark-blue-color);
+}
+
 .bg-dark-violet {
   background: var(--dark-violet-color);
+}
+
+.bg-dark-yellow {
+  background: var(--dark-yellow-color);
 }
 
 .bg-dark-violet * {

@@ -1,0 +1,17 @@
+.dashboard-wrapper .navbar-brand {
+    height: 60px;
+}
+
+.dashboard-wrapper .MuiDrawer-root .MuiToolbar-root.MuiToolbar-gutters {
+    background-color: var(--white-color);
+}
+
+.dashboard-wrapper,
+.dark-bg>div {
+    background-color: #000812;
+    color: #fff;
+}
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+    border-right: 1px solid rgb(255 255 255 / 15%) !important;
+}

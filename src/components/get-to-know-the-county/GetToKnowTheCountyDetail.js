@@ -3,48 +3,70 @@ import { MapFill, Phone, PhoneFill, PinFill, TelephoneFill, PinMap } from "react
 import { Link, useParams } from "react-router-dom";
 import { Component, useEffect, useState } from "react";
 import "./GetToKnowTheCounty.css";
-import CountryData from "./CountryData";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
-function GetToKnowTheCountyDetail() {
-    const [countries, fetchCountries] = useState([]);
+function GetToKnowTheCountyDetail(props) {
+    const { userId } = useParams();
+    const [users, fetchUsers] = useState([]);
 
     const getData = () => {
-        fetch('https://restcountries.com/v3.1/all')
+        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
             .then((res) => res.json())
             .then((res) => {
-                fetchCountries(res)
+                fetchUsers(res)
             }).catch((error) => console.log('error', error))
     }
     useEffect(() => {
         getData()
     }, []);
-    const { countryName } = useParams();
-    const thisCountry = countries.find(item => item.name.common === countryName)
-    const thisProduct = CountryData.find(prod => prod.id === countryName)
-    console.log(thisProduct)
 
+    const thisUser = users;
 
     return (
         <div className="page-wrapper">
-            <div className="content w-bg single-bg" style={{ backgroundImage: `url("/assets/images/general/places-to-stay-bg.jpeg")` }}>
+            <Header />
+            <div className="content w-bg single-bg" style={{ backgroundImage: `url("/assets/images/general/get-to-know-county-bg.jpeg")` }}>
                 <Container>
                     <div className="text-start bg-content">
                         <Row>
                             <Col xl={6}>
-                                <h2>Stay in wonderland for a while</h2>
-                                <p>You can always find the perfect place to lay your head for the night in {thisProduct.name}.</p>
+                                <h2>Find adventure unlike any other</h2>
+                                <p>Discover the many adventures "{thisUser.name}" has to offer.</p>
                             </Col>
                         </Row>
                     </div>
                     <Breadcrumb className="breadcrumbs">
                         <Link to="/">Home</Link>
-                        <Link to="/places-to-stay" className="active">Places to Stay</Link>
+                        <Link to="/get-to-know-the-county">Get to know county</Link>
+                        <Link to="/get-to-know-the-county" className="active">{thisUser.name}</Link>
                     </Breadcrumb>
                 </Container>
             </div>
-            <Container>
+            <div className="content my-100 countries">
+                <Container>
+                    <div className="text-center mb-5">
+                        <span className="icon large">
+                            <PinMap />
+                        </span>
+                        <h1 className="main-title">Get to know the {thisUser.name}</h1>
+                    </div>
+                    <h3>{thisUser.name}</h3>
+                    <ul>
+                        <li>{thisUser.username}</li>
+                        <li>{thisUser.email}</li>
+                        <li>{thisUser.phone}</li>
+                        <li>{thisUser.website}</li>
+                        {/* <li>{thisUser.address.suite}</li>
+                        <li>{thisUser.address.city}</li>
+                        <li>{thisUser.address.zipcode}</li>
+                        <li>{thisUser.address.city}</li>
+                        <li>{thisUser.company.name}</li> */}
+                    </ul>
+                </Container>
+            </div>
 
-            </Container>
+            <Footer />
         </div>
     )
 }
