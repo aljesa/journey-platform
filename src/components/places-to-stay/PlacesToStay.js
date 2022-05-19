@@ -1,5 +1,5 @@
 import { Container, Row, Col, Breadcrumb, Form, Card, Figure } from "react-bootstrap";
-import { MapFill, Phone, PhoneFill, PinFill, TelephoneFill, PinMap } from "react-bootstrap-icons";
+import { Phone, PinFill, PinMap } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";

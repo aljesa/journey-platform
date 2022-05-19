@@ -37,7 +37,7 @@ export default function Suitcase() {
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><img src="/assets/images/general/hotel/room-5-1024x664.jpeg" /></td>
+                                <td><img src="/assets/images/general/hotel/room-5-1024x664.jpeg" alt="Hotel" title="Hotel" /></td>
                                 <td>Hotel</td>
                                 <td>39 $</td>
                                 <td>Amsterdam</td>

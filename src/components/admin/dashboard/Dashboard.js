@@ -12,15 +12,19 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { ListItem, ListItemText, MenuItem, MenuList } from '@mui/material';
-import { mainListItems, secondaryListItems } from './DashboardItems';
 import logo from '../../../logo_transparent.png';
 import "./Dashboard.css";
+import ArticleIcon from '@mui/icons-material/Article';
+import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
+import HotelIcon from '@mui/icons-material/Hotel';
+import FlagIcon from '@mui/icons-material/Flag';
+import PersonIcon from '@mui/icons-material/Person';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import PropTypes from 'prop-types';
+import NavigationList from './navigation/NavigationList';
 
 const drawerWidth = 240;
 
@@ -93,10 +97,49 @@ const mdTheme = createTheme({
         ].join(','),
     },
 });
+
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `vertical-tab-${index}`,
+        'aria-controls': `vertical-tabpanel-${index}`,
+    };
+}
 export default function Dashboard() {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
+    };
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
     return (
         <div className="dashboard-wrapper">
@@ -122,19 +165,11 @@ export default function Dashboard() {
                             >
                                 <MenuIcon />
                             </IconButton>
-                            <Typography
-                                component="h1"
-                                variant="h6"
-                                color="inherit"
-                                noWrap
-                                sx={{ flexGrow: 1 }}
-                            >
-                                Dashboard
-                            </Typography>
+
 
                         </Toolbar>
                     </AppBar>
-                    <Drawer variant="permanent" open={open} className="dark-bg">
+                    <Drawer variant="permanent" open={open} className="dark-bg border-end-0 custom-drawer">
                         <Toolbar
                             sx={{
                                 display: 'flex',
@@ -142,7 +177,7 @@ export default function Dashboard() {
                                 justifyContent: 'flex-end',
                                 px: [1],
                             }}
-                        >
+                            className="custom-toolbar">
                             <div className='navbar-brand'>
                                 <img src={logo} />
                             </div>
@@ -152,7 +187,23 @@ export default function Dashboard() {
                         </Toolbar>
                         <Divider />
                         <List component="nav">
-                            {mainListItems}
+                            <Tabs
+                                orientation="vertical"
+                                variant="scrollable"
+                                value={value}
+                                onChange={handleChange}
+                                aria-label="Vertical tabs example"
+                                sx={{ borderRight: 1, borderColor: 'divider' }}
+                                className="tab-wrapper"
+                            >
+                                <Tab label="Users" {...a11yProps(0)} icon={<PersonIcon />} className="tab-item" />
+                                <Tab label="Navigation" {...a11yProps(1)} icon={<MenuIcon />} className="tab-item" />
+                                <Tab label="News" {...a11yProps(2)} icon={<ArticleIcon />} className="tab-item" />
+                                <Tab label="Things to do" {...a11yProps(3)} icon={<DownhillSkiingIcon />} className="tab-item" />
+                                <Tab label="Places to stay" {...a11yProps(4)} icon={<HotelIcon />} className="tab-item" />
+                                <Tab label="Countries" {...a11yProps(5)} icon={<FlagIcon />} className="tab-item" />
+                            </Tabs>
+
                             {/* <Divider sx={{ my: 1 }} />
                             {secondaryListItems} */}
                         </List>
@@ -167,10 +218,31 @@ export default function Dashboard() {
                         }}
                     >
                         <Toolbar />
-                        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-
+                        <Container maxWidth="xxl" sx={{ mt: 4, mb: 4 }}>
+                            <TabPanel value={value} index={0} className="tabpanel-item">
+                                Item One
+                            </TabPanel>
+                            <TabPanel value={value} index={1} className="tabpanel-item">
+                                <NavigationList />
+                            </TabPanel>
+                            <TabPanel value={value} index={2} className="tabpanel-item">
+                                Item Three
+                            </TabPanel>
+                            <TabPanel value={value} index={3} className="tabpanel-item">
+                                Item Four
+                            </TabPanel>
+                            <TabPanel value={value} index={4} className="tabpanel-item">
+                                Item Five
+                            </TabPanel>
+                            <TabPanel value={value} index={5} className="tabpanel-item">
+                                Item Six
+                            </TabPanel>
+                            <TabPanel value={value} index={6} className="tabpanel-item">
+                                Item Seven
+                            </TabPanel>
                         </Container>
                     </Box>
+
                 </Box>
             </ThemeProvider>
         </div>

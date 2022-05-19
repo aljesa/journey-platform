@@ -4,9 +4,7 @@ import './assets/fonts/montserrat/Montserrat-Bold.ttf';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PlacesToStay from './components/places-to-stay/PlacesToStay';
 import PlacesList from './components/places-to-stay/PlacesList';
 import GetToKnowTheCounty from './components/get-to-know-the-county/GetToKnowTheCounty';
@@ -15,22 +13,8 @@ import NewsOverview from './components/news/NewsOverview';
 import Suitcase from './components/suitcase/Suitcase';
 import PlacesDetail from './components/places-to-stay/PlacesDetail';
 import Login from './components/admin/login/Login';
-import reactRouterToArray from 'react-router-to-array';
 import Dashboard from './components/admin/dashboard/Dashboard';
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const routesList = reactRouterToArray(
-  <Routes>
-    <Route path="/" element={<App />} />
-    <Route path="/places-to-stay" element={<PlacesToStay />} />
-    <Route path="/places-to-stay/list" element={<PlacesList />} />
-    <Route path="/places-to-stay/list/detail" element={<PlacesDetail />} />
-    <Route path="/get-to-know-the-county" element={<GetToKnowTheCounty />} />
-    <Route path="/news" element={<NewsOverview />} />
-    <Route path="/get-to-know-the-county/:userId" element={<GetToKnowTheCountyDetail />} />
-    <Route path="/suitcase" element={<Suitcase />} />
-    <Route path="/admin" element={<Login />} />
-  </Routes>
-)
 root.render(
   <BrowserRouter>
 
