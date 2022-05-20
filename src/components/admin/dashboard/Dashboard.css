@@ -52,3 +52,11 @@
 .table-wrapper p {
     margin-top: 0;
 }
+
+.icon-hover:hover svg {
+    color: var(--dark-violet-color);
+}
+
+.dashboard-wrapper .icon-hover:hover {
+    background-color: #ffc10766;
+}

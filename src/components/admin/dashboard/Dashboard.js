@@ -25,6 +25,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PropTypes from 'prop-types';
 import NavigationList from './navigation/NavigationList';
+import NewsList from './news/NewsList';
 
 const drawerWidth = 240;
 
@@ -89,6 +90,9 @@ const mdTheme = createTheme({
         },
         white: {
             main: 'light'
+        },
+        violet: {
+            main: '#795487'
         }
     },
     typography: {
@@ -226,7 +230,7 @@ export default function Dashboard() {
                                 <NavigationList />
                             </TabPanel>
                             <TabPanel value={value} index={2} className="tabpanel-item">
-                                Item Three
+                                <NewsList />
                             </TabPanel>
                             <TabPanel value={value} index={3} className="tabpanel-item">
                                 Item Four

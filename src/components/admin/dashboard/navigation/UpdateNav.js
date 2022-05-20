@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 
 
-export default function CreateNav(props) {
+export default function UpdateNav(props) {
 
     const [title, setTitle] = useState('');
     const [link, setLink] = useState('');
@@ -14,7 +14,8 @@ export default function CreateNav(props) {
     const baseURL = "http://localhost:5296/api/Navigation";
 
 
-    function onCreateNav(e) {
+    function onUpdateNav(e) {
+        e.preventDefault();
 
         const postData = {
             title,
@@ -23,8 +24,7 @@ export default function CreateNav(props) {
         };
         console.log(postData);
 
-        axios.post(baseURL, postData).then((response) => {
-            alert("Item added successfully!")
+        axios.put(baseURL, postData).then((response) => {
 
         }).catch(error => {
             console.log(error.message)
